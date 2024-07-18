@@ -10,13 +10,8 @@ public class Program {
 		ChessMatch chessMatch = new ChessMatch();
 		UI.printBoard(chessMatch.getPieces());
 		System.out.println();
-		System.out.println();
-		System.out.println("--------------DESCRIÇÃO: -----------");
-		System.out.println("peças 'brancas' -> cor VERMELHO");
-		System.out.println("peças 'pretas' -> cor AMARELO");
-		System.out.println("------------------------------------");	
-		System.out.println();
-		System.out.println();
+		Description d = new Description();
+		System.out.println(d.toString());
 	}
 
 }
