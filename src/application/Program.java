@@ -32,10 +32,9 @@ public class Program {
 				System.out.println(d.toString());
 				System.out.println();
 				
-				UI.printBoard(chessMatch.getPieces());
+				UI.printMatch(chessMatch);
 				System.out.println();
-				System.out.print("---------------\n");
-				System.out.print("Posição Origem: ");
+				System.out.print(">>>>Posição Origem: ");
 				ChessPosition source = UI.readChessPosition(sc);
 				System.out.println();
 				
@@ -44,9 +43,8 @@ public class Program {
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 				
 				System.out.println();
-				System.out.print("Posição Destino: ");
+				System.out.print(">>>>Posição Destino: ");
 				ChessPosition target = UI.readChessPosition(sc);
-				System.out.print("---------------\n");
 				
 				System.out.println();
 				
