@@ -62,18 +62,33 @@ public class UI {
 		System.out.println();
 		System.out.println("JOGADA: " + chessMatch.getTurn());
 		
-		if(chessMatch.getCurrentPlayer() == Color.WHITE) {
-			System.out.println("ESPERANDO JOGADA DAS " + ANSI_RED + "[BRANCAS]");
-			System.out.print(ANSI_RESET);
-		}else {
-			System.out.println("ESPERANDO JOGADA DAS " + ANSI_YELLOW +  "[PRETAS]");
-			System.out.print(ANSI_RESET);
-		}
+		if(!chessMatch.getCheckMate()) {		
 		
-		if(chessMatch.getCheck()) {
-			System.out.println();
-			System.out.println(ANSI_CYAN + "[CHECK!]");
-			System.out.print(ANSI_RESET);
+			if(chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println("ESPERANDO JOGADA DAS " + ANSI_RED + "[BRANCAS]");
+				System.out.print(ANSI_RESET);
+			}else {
+				System.out.println("ESPERANDO JOGADA DAS " + ANSI_YELLOW +  "[PRETAS]");
+				System.out.print(ANSI_RESET);
+			}
+			
+			if(chessMatch.getCheck()) {
+				System.out.println();
+				System.out.println(ANSI_CYAN + "[CHECK!]");
+				System.out.print(ANSI_RESET);
+			}
+		}else {
+			System.out.println(ANSI_CYAN + "[CHECKMATE!]");
+			//System.out.print(ANSI_RESET);
+			
+			if(chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println("VENCEDOR: " + ANSI_RED + "BRANCAS");
+				System.out.print(ANSI_RESET);
+			}else {
+				System.out.println(ANSI_CYAN + "VENCEDOR: " + ANSI_YELLOW +  "[PRETAS]");
+			}
+			
+			System.out.println("FIM DO JOGO!");
 		}
 		
 	}
