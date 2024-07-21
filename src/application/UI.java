@@ -49,7 +49,7 @@ public class UI {
 		}
 		catch (RuntimeException e) {
 			// TODO: handle exception
-			throw new InputMismatchException("Erro lendo posição de xadrez. Valores valido sao de [a1] até [h8]");
+			throw new InputMismatchException("Erro lendo posicao de xadrez. Valores valido sao de [a1] até [h8]");
 		}
 		
 	}
@@ -67,6 +67,12 @@ public class UI {
 			System.out.print(ANSI_RESET);
 		}else {
 			System.out.println("ESPERANDO JOGADA DAS " + ANSI_YELLOW +  "[PRETAS]");
+			System.out.print(ANSI_RESET);
+		}
+		
+		if(chessMatch.getCheck()) {
+			System.out.println();
+			System.out.println(ANSI_CYAN + "[CHECK!]");
 			System.out.print(ANSI_RESET);
 		}
 		

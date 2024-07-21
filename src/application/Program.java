@@ -30,10 +30,12 @@ public class Program {
 				
 				UI.clearScreen();
 				
+				/*
 				System.out.println();
 				Description d = new Description();
 				System.out.println(d.toString());
 				System.out.println();
+				*/
 				
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
