@@ -58,6 +58,10 @@ public class ChessMatch {
 		return promoted;
 	}
 	
+	public Board getBoard() {
+        return board;
+    }
+	
 	public ChessPiece[][] getPieces(){
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for ( int i = 0; i < board.getRows(); i++) {
@@ -67,6 +71,11 @@ public class ChessMatch {
 		}
 		return mat;
 	}
+	
+	public List<Piece> getCapturedPieces(Color color) {
+	    return capturedPieces.stream().filter(x -> ((ChessPiece) x).getColor() == color).collect(Collectors.toList());
+	}
+
 	
 	public boolean[][] possibleMoves(ChessPosition sourcePosition){
 		Position position = sourcePosition.toPosition();
@@ -339,6 +348,8 @@ public class ChessMatch {
 		piecesOnTheBoard.add(piece);
 	}
 	
+	
+	
 	private void initialSetup() {
 		
 		placeNewPiece('a', 1, new Rook(board, Color.WHITE));
@@ -375,6 +386,9 @@ public class ChessMatch {
         placeNewPiece('g', 7, new Pawn(board, Color.BLACK, this));
         placeNewPiece('h', 7, new Pawn(board, Color.BLACK, this));
 	}
+
+
+	
 
 	
 
