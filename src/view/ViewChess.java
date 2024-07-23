@@ -60,7 +60,7 @@ public class ViewChess extends JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 buttons[i][j] = new JButton();
-                buttons[i][j].setPreferredSize(new Dimension(70, 70));  // Ajuste conforme necessário
+                buttons[i][j].setPreferredSize(new Dimension(70, 70));  
                 buttons[i][j].setOpaque(true);
                 buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 buttons[i][j].addActionListener(new ButtonClickListener(i, j));
@@ -98,7 +98,7 @@ public class ViewChess extends JFrame {
                 } else {
                     buttons[i][j].setIcon(null);  // No image for empty squares
                 }
-                buttons[i][j].setBackground((i + j) % 2 == 0 ? Color.LIGHT_GRAY  : Color.DARK_GRAY);  // Optional: Set background color
+                buttons[i][j].setBackground((i + j) % 2 == 0 ? Color.LIGHT_GRAY  : Color.DARK_GRAY); 
             }
         }
     }
@@ -123,11 +123,20 @@ public class ViewChess extends JFrame {
         if (chessMatch.getCheckMate()) {
             statusLabel.setText("CHECKMATE!");
             statusLabel.setForeground(Color.RED);
+            disableBoard();
         } else if (chessMatch.getCheck()) {
             statusLabel.setText("CHECK!");
             statusLabel.setForeground(Color.ORANGE);
         } else {
             statusLabel.setText("");
+        }
+    }
+    
+    private void disableBoard() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                buttons[i][j].setEnabled(false);
+            }
         }
     }
 
@@ -185,6 +194,12 @@ public class ViewChess extends JFrame {
                     ChessPosition sourcePosition = ChessPosition.fromPosition(selectedPosition);
                     ChessPosition targetPosition = ChessPosition.fromPosition(position);
                     chessMatch.performChessMove(sourcePosition, targetPosition);
+                    
+                    if (chessMatch.getPromoted() != null) {
+                        String type = askUserForPieceType();
+                        chessMatch.replacePromotedPiece(type);
+                    }
+                    
                     updateBoard();
                     updateSidePanel();
                 } catch (ChessException ex) {
@@ -193,6 +208,13 @@ public class ViewChess extends JFrame {
                 selectedPiece = null;
                 selectedPosition = null;
             }
+        }
+        private String askUserForPieceType() {
+            String[] options = {"B", "N", "R", "Q"};
+            int response = JOptionPane.showOptionDialog(null, "Escolha a peça para promoção", "Promoção de Peão",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[3]);
+            return options[response];
         }
     }
 

@@ -14,11 +14,6 @@ import chess.ChessPosition;
 public class Program {
 
 	public static void main(String[] args) {
-		/*
-		System.out.println();
-		Description d = new Description();
-		System.out.println(d.toString());
-		System.out.println();*/
 
 		Scanner sc = new Scanner(System.in);
 		
@@ -30,12 +25,6 @@ public class Program {
 				
 				UI.clearScreen();
 				
-				/*
-				System.out.println();
-				Description d = new Description();
-				System.out.println(d.toString());
-				System.out.println();
-				*/
 				
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
